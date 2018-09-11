@@ -135,6 +135,21 @@
 		insert into et_r_user_role(user_id,role_id) value
 		(#{user_id},#{role_id})
 	</insert>
+	<select id="getUserListByDept" resultType="com.extr.domain.user.User">
+		select a.id as
+		id,a.username as username,a.truename as truename,
+		a.`password` as
+		`password`,a.email as email,a.phone as phone,
+		a.add_date as
+		create_date,a.expire_date as expire_date,a.add_by as creator,
+		a.enabled as enabled,a.field_id as fieldId,
+		b.field_name as
+		fieldName,a.last_login_time as lastLoginTime,
+		a.login_time as loginTime,province,company,department,idcard,address,zipcode,tel,type
+		from et_user a,et_field b where department=#{department}
+		and
+		a.field_id=b.field_id
+	</select>
 	<select id="getUserListByRoleId" resultType="com.extr.domain.user.User">
 		select a.id as
 		id,a.username as username,a.truename as truename,

@@ -134,4 +134,10 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userMapper.countWinner(map);
 	}
+
+	@Override
+	public List<User> getUserListByDept(String department) {
+		List<User> userList = userMapper.getUserListByDept(department);
+		return userList;
+	}
 }

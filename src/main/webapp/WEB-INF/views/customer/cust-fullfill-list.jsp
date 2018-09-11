@@ -26,7 +26,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<link href="resources/css/exam.css" rel="stylesheet">
 		<link href="resources/chart/morris.css" rel="stylesheet">
-
+<style type="text/css">
+			.disable-btn, .enable-btn{
+				text-decoration: underline;
+			}
+			.disable-btn, .enable-btn{
+				cursor:pointer;
+			}
+		</style>
 	</head>
 	<body>
 		<header>
@@ -78,20 +85,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table class="table-striped table">
 									<thead>
 										<tr>
-											<td></td><td>ID</td><td>客户号</td>											
+											<td>客户号</td>											
 											<td>姓名</td>
 											<td>年日均</td>											
 											<td>当前余额</td>											
-											<td>开户日期</td>
+											<td>开户日期</td><td>归属</td><td></td>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach items="${custList }" var="item">
 											<tr>
-												<td>
-													<input type="checkbox" value="${item.data_id }">
-												</td>
-												<td>${item.data_id }</td>
 												<td>${item.cust_no }</td><td>${item.cust_name }</td>
 												<td>${item.tot_y_acm }</td>
 												<td>${item.tot_amt_now }</td>
@@ -99,6 +102,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<td>
 													${item.open_dt }
 												</td>
+												<td><select class="form-control" name="oa_num" id="oa_num">
+													<option value=""> 请选择</option>
+													<c:forEach items="${userlist}" var="v">
+													<option value="${v.username}">${v.truename}</option>
+													</c:forEach>
+												</select></td><td><span class="label label-success enable-btn" data-id="${item.data_id}">确认</span></td>
 											</tr>
 										</c:forEach>
 										

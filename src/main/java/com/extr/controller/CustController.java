@@ -99,6 +99,9 @@ public class CustController {
 		String pageStr = PagingUtil.getPagelink(index, page.getTotalPage(), "", "customer/cust-fullfill-list");
 		model.addAttribute("custList", custList);
 		model.addAttribute("pageStr", pageStr);
+		
+		List<User> userList=userService.getUserListByDept(user.getDepartment());
+		model.addAttribute("userlist",userList);
 		return "customer/cust-fullfill-list";
 	}
 }

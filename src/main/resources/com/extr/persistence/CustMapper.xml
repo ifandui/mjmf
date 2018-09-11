@@ -20,7 +20,7 @@
 
 	<select id="getCustListByDept" resultType="com.extr.domain.user.Customer">
 		SELECT data_id, data_dt, oa_num, oa_nm, open_org_id, org_name, cust_no, cust_name, cert_num, tot_y_acm, tot_y_acm_cmp, tot_amt_now, yr_bg_cmp, mh_ed_cmp, lt_dy_cmp, open_dt
-FROM mjmf.cust_bla_cmp where org_name=#{department}
+FROM mjmf.cust_bla_cmp_1 where org_name=#{department}
 
 
 	</select>
@@ -29,12 +29,12 @@ FROM mjmf.cust_bla_cmp where org_name=#{department}
 
 	<select id="getBlankCustListByDept" resultType="com.extr.domain.user.Customer">
 		SELECT data_id, data_dt, oa_num, oa_nm, open_org_id, org_name, cust_no, cust_name, cert_num, tot_y_acm, tot_y_acm_cmp, tot_amt_now, yr_bg_cmp, mh_ed_cmp, lt_dy_cmp, open_dt
-FROM mjmf.cust_bla_cmp where oa_num='' and org_name=#{department}
+FROM mjmf.cust_bla_cmp_1 where oa_num='' and org_name=#{department}
 	</select>
 
 	<select id="getCustListByUsername" resultType="com.extr.domain.user.Customer">
 			SELECT data_id, data_dt, oa_num, oa_nm, open_org_id, org_name, cust_no, cust_name, cert_num, tot_y_acm, tot_y_acm_cmp, tot_amt_now, yr_bg_cmp, mh_ed_cmp, lt_dy_cmp, open_dt
-	FROM mjmf.cust_bla_cmp where oa_num=#{currentUsername}
+	FROM mjmf.cust_bla_cmp_1 where oa_num=#{currentUsername}
 		</select>
 	
 	

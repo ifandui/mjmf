@@ -24,6 +24,8 @@ public interface UserService {
 	
 	public List<User> getUserListByIsallAndIswin(String isall,String iswin);
 	
+	public List<User> getUserListByDept(String department);	
+	
 	public List<User> getUserListByIsallAndIswinAndWinlevel(String isall,String iswin,String winlevel);	
 	
 	public void updateUser(User user,String oldPassword);

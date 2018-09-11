@@ -138,5 +138,12 @@ public interface UserMapper {
 	public void updateIswin(User user);
 	
 	public int countWinner(Map<String, Object> map);
+
+
+	/**
+	 *会计经理获取同机构user
+	 * @param department
+	 */
+	public List<User> getUserListByDept(@Param("department") String department);
 	
 }
