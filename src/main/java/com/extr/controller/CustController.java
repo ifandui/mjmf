@@ -99,9 +99,33 @@ public class CustController {
 		String pageStr = PagingUtil.getPagelink(index, page.getTotalPage(), "", "customer/cust-fullfill-list");
 		model.addAttribute("custList", custList);
 		model.addAttribute("pageStr", pageStr);
+		model.addAttribute("totalRecord", page.getTotalRecord());
 		
 		List<User> userList=userService.getUserListByDept(user.getDepartment());
 		model.addAttribute("userlist",userList);
 		return "customer/cust-fullfill-list";
 	}
+	
+	/**
+	 * 禁用用户
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "customer/cust-fullfill", method = RequestMethod.POST)
+	public @ResponseBody Message fullfillCust(@RequestBody Customer cust) {
+		Message message = new Message();
+		try {
+			custService.updateCustomer(cust);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			
+				message.setResult(e.getMessage());
+				message.setMessageInfo("数据库错误");
+			
+			e.printStackTrace();
+		}
+		return message;
+	}
+	
 }

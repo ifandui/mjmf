@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>孟津民丰村镇银行——新客户认领</title>
+		<title>孟津民丰村镇银行——存量客户</title>
 		<meta name="keywords" content="">
 		<link rel="shortcut icon" href="<%=basePath%>resources/images/favicon.ico" />
 		<link href="resources/bootstrap/css/bootstrap-huan.css" rel="stylesheet">
@@ -61,12 +61,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="row">
 					<div class="col-xs-3">
 						<ul class="nav default-sidenav">
+							<li class="active">
+								<a> <i class="fa fa-wrench"></i> 存量客户 </a>
+							</li>
 							<li>
 								<a href="customer/cust-fullfill-list"> <i class="fa fa-list-ul"></i> 新客户认领 </a>
 							</li>
-							<li class="active">
-								<a> <i class="fa fa-wrench"></i> 存量客户 </a>
-							</li>						
+													
 						</ul>
 					</div>
 					<div class="col-xs-9">
@@ -78,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<table class="table-striped table">
 									<thead>
 										<tr>
-											<td></td><td>ID</td><td>客户号</td>											
+											<td>客户号</td>											
 											<td>姓名</td>
 											<td>年日均</td>											
 											<td>当前余额</td>											
@@ -87,11 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</thead>
 									<tbody>
 										<c:forEach items="${custList }" var="item">
-											<tr>
-												<td>
-													<input type="checkbox" value="${item.data_id }">
-												</td>
-												<td>${item.data_id }</td>
+											<tr>												
 												<td>${item.cust_no }</td><td>${item.cust_name }</td>
 												<td>${item.tot_y_acm }</td>
 												<td>${item.tot_amt_now }</td>

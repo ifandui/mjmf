@@ -68,11 +68,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="row">
 					<div class="col-xs-3">
 						<ul class="nav default-sidenav">
-							<li class="active">
-								<a> <i class="fa fa-list-ul"></i> 新客户认领 </a>
-							</li>
 							<li>
 								<a href="customer/cust-list"> <i class="fa fa-list-ul"></i> 存量客户 </a>
+							</li>
+							<li class="active">
+								<a> <i class="fa fa-list-ul"></i> 新客户认领 </a>
 							</li>						
 						</ul>
 					</div>
@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<td>
 													${item.open_dt }
 												</td>
-												<td><select class="form-control" name="oa_num" id="oa_num">
+												<td><select class="form-control" name="oa_num" id="oa_num_${item.data_id}">
 													<option value=""> 请选择</option>
 													<c:forEach items="${userlist}" var="v">
 													<option value="${v.username}">${v.truename}</option>
@@ -141,39 +141,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
 		<script>
 			$(function(){
-				$(".disable-btn").click(function(){
-					var message = "确定要禁用该用户吗？";
-					var answer = confirm(message);
-					if(!answer){
-						return false;
-					}
-					
-					jQuery.ajax({
-						headers : {
-							'Accept' : 'application/json',
-							'Content-Type' : 'application/json'
-						},
-						type : "GET",
-						url : 'admin/disable-user/' + $(this).data("id"),
-						success : function(message,tst,jqXHR) {
-							if(!util.checkSessionOut(jqXHR))return false;
-							if (message.result == "success") {
-								util.success("操作成功！", function(){
-									 window.location.reload();
-								});
-							} else {
-								util.error(message.result);
-							}
-						},
-						error : function(jqXHR, textStatus) {
-							util.error("操作失败请稍后尝试");
-						}
-					});
-					
-				});
+				
 				
 				$(".enable-btn").click(function(){
-					var message = "确定要启用该用户吗？";
+					var data_id=$(this).data("id");
+					
+					var data_id=data_id;
+					var oa_num=$("#oa_num_"+data_id).val();
+					var oa_nm=$("#oa_num_"+data_id).find("option:selected").text();
+					var data={'data_id':data_id,'oa_num':oa_num,'oa_nm':oa_nm};
+					console.log(data);
+					var message = "确定要提交吗？";
 					var answer = confirm(message);
 					if(!answer){
 						return false;
@@ -183,10 +161,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							'Accept' : 'application/json',
 							'Content-Type' : 'application/json'
 						},
-						type : "GET",
-						url : 'admin/enable-user/' + $(this).data("id"),
+						type : "POST",
+						data:JSON.stringify(data),
+						url : 'customer/cust-fullfill',
 						success : function(message,tst,jqXHR) {
 							if(!util.checkSessionOut(jqXHR))return false;
+							console.log(message);
 							if (message.result == "success") {
 								util.success("操作成功！", function(){
 									 window.location.reload();

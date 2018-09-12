@@ -4,29 +4,21 @@
 
 <mapper namespace="com.extr.persistence.CustMapper">
 
-	<update id="updateCustomer" parameterType="com.extr.domain.user.Customer">
-		update cust_bla_cmp
+	<update id="updateCust" parameterType="com.extr.domain.user.Customer">
+		update cust_bla_cmp_1
 		<set>
-			<if test="cust.oa_num != null">oa_num=#{cust.oa_num},</if>
-			<if test="cust.oa_nm != null">oa_nm=#{cust.oa_nm},</if>
+			<if test="oa_num != null">oa_num=#{oa_num},</if>
+			<if test="oa_nm != null">oa_nm=#{oa_nm},</if>
 		</set>
 		<where>
-			(username = #{user.username} or id=#{user.id})
-			<if test="oldpassword != null">
-				and password=#{oldpassword}
-			</if>
+			data_id=#{data_id}
 		</where>
 	</update>
 
 	<select id="getCustListByDept" resultType="com.extr.domain.user.Customer">
 		SELECT data_id, data_dt, oa_num, oa_nm, open_org_id, org_name, cust_no, cust_name, cert_num, tot_y_acm, tot_y_acm_cmp, tot_amt_now, yr_bg_cmp, mh_ed_cmp, lt_dy_cmp, open_dt
 FROM mjmf.cust_bla_cmp_1 where org_name=#{department}
-
-
 	</select>
-
-
-
 	<select id="getBlankCustListByDept" resultType="com.extr.domain.user.Customer">
 		SELECT data_id, data_dt, oa_num, oa_nm, open_org_id, org_name, cust_no, cust_name, cert_num, tot_y_acm, tot_y_acm_cmp, tot_amt_now, yr_bg_cmp, mh_ed_cmp, lt_dy_cmp, open_dt
 FROM mjmf.cust_bla_cmp_1 where oa_num='' and org_name=#{department}

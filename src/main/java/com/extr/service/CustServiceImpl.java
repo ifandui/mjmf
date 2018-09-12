@@ -37,7 +37,7 @@ public class CustServiceImpl implements CustService {
 	@Override
 	public void updateCustomer(Customer cust) {
 		// TODO Auto-generated method stub
-		
+		custMapper.updateCust(cust);
 	}
 
 

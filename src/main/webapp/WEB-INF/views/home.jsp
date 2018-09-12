@@ -144,8 +144,8 @@ String basePath = request.getScheme() + "://"
 									<i class="fa fa-male"></i>
 								</div>
 								<div class="select-test-content">
-									<h3 class="title">孟津民丰村镇银行客户认领</h3>									
-									<a class="btn btn-primary" href="customer/cust-list"><i class="fa fa-arrow-right"></i>开始认领</a>
+									<h3 class="title">孟津民丰村镇银行积分系统</h3>									
+									<a class="btn btn-primary" href="customer/cust-list"><i class="fa fa-arrow-right"></i>开始进入</a>
 									<br/>
 									<br/>
 									

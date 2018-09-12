@@ -22,5 +22,7 @@ public interface CustMapper {
 
 	public List<Customer> getCustListByUsername(@Param("currentUsername") String currentUsername,@Param("page") Page<Customer> page);
 
+	public void updateCust(Customer cust);
+
 	
 }
