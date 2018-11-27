@@ -15,7 +15,7 @@ String basePath = request.getScheme() + "://"
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>孟津民丰村镇银行考试系统——首页</title>
+		<title>孟津民丰村镇银行——首页</title>
 		<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -155,7 +155,8 @@ String basePath = request.getScheme() + "://"
 							</div>
 						</div>
 					</div>
-										<div class="row">
+					 
+					<div class="row">
 						<div class="select-test col-xs-6">
 							<div style="height: 100px;">
 								<div class="select-test-icon">
@@ -190,11 +191,11 @@ String basePath = request.getScheme() + "://"
 									  </div>
 									</div>
 								</div>
-								<!--//content-->
+								
 							</div>
 						</div>
 					</div>
-					
+					 
 				</div>
 
 			</div>

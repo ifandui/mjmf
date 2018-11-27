@@ -11,6 +11,7 @@
 
 	<!-- <security:http use-expressions="true"> -->
 	<security:http pattern="/start" security="none" />
+	<security:http pattern="/pingfen" security="none" />
 	<security:http auto-config="false" use-expressions="true"
 		entry-point-ref="loginUrlAuthenticationEntryPoint">
 		<security:intercept-url pattern="/admin/**"
@@ -21,8 +22,10 @@
 			access="hasRole('ROLE_STUDENT')" />
 		<security:intercept-url pattern="/customer/cust-fullfill-list"
 			access="hasRole('ROLE_ACMGR')" />
+		<security:intercept-url pattern="/user/miss-fullfill-list"
+			access="hasRole('ROLE_SUPERVISION')" />
 		<security:intercept-url pattern="/customer/cust-list"
-			access="hasAnyRole('ROLE_ADMIN', 'ROLE_ACMGR', 'ROLE_CUSMGR','ROLE_TELLER')" />
+			access="hasAnyRole('ROLE_ADMIN', 'ROLE_ACMGR', 'ROLE_CUSMGR','ROLE_TELLER','ROLE_SUPERVISION')" />
 		<security:intercept-url pattern="/api2/**"
 			access="hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER', 'ROLE_STUDENT')" />
 		<security:custom-filter position="FORM_LOGIN_FILTER"

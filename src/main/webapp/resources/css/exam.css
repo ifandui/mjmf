@@ -361,6 +361,18 @@ a.pressed:hover {
 .efi-selected {
 	border-bottom: solid 2px #1ba1e2;
 	color: #666 !important;
+	font-weight:bold;
+}
+.efi-selected1 {
+	background-color: #0088cc !important;
+	color:#fff;
+	font-weight:bold;
+	padding: 5px 8px;
+	margin-right: 5px;
+}
+
+.h_point_del{
+	cursor: pointer;
 }
 
 .exampaper-filter-item {

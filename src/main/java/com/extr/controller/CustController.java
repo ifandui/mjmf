@@ -74,6 +74,7 @@ public class CustController {
 		
 		List<Customer> custList = custService.getCustListByUsername(currentUsername,page);
 		String pageStr = PagingUtil.getPagelink(index, page.getTotalPage(), "", "customer/cust-list");
+		model.addAttribute("userInfo",userInfo);
 		model.addAttribute("custList", custList);
 		model.addAttribute("pageStr", pageStr);
 		model.addAttribute("totalRecord", page.getTotalRecord());

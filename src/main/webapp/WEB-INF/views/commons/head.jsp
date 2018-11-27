@@ -15,10 +15,10 @@
 					</div>
 					<div class="col-xs-7" id="login-info">
 						<c:choose>
-							<c:when test="${not empty sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}">
+							<c:when test="${not empty sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.trueName}">
 								<div id="login-info-user">
 									
-									<a href="#" id="system-info-account" target="_self">${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}</a>
+									<a href="#" id="system-info-account" target="_self">${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.trueName}</a>
 									<span>|</span>
 									<a href="j_spring_security_logout"><i class="fa fa-sign-out"></i> 退出</a>
 								</div>

@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<option <c:if test="${'孟津民丰村镇银行城关支行' eq user.department}">selected</c:if> value="孟津民丰村镇银行城关支行">孟津民丰村镇银行城关支行</option>
 												<option <c:if test="${'孟津民丰村镇银行麻屯支行' eq user.department}">selected</c:if> value="孟津民丰村镇银行麻屯支行">孟津民丰村镇银行麻屯支行</option>
 												<option <c:if test="${'孟津民丰村镇银行白鹤支行' eq user.department}">selected</c:if> value="孟津民丰村镇银行白鹤支行">孟津民丰村镇银行白鹤支行</option>
-												<option <c:if test="${'孟津民丰村镇银行会盟支行' eq user.department}">selected</c:if> value="孟津民丰村镇银行营业部">孟津民丰村镇银行会盟支行</option>
+												<option <c:if test="${'孟津民丰村镇银行会盟支行' eq user.department}">selected</c:if> value="孟津民丰村镇银行会盟支行">孟津民丰村镇银行会盟支行</option>
 												<option <c:if test="${'孟津民丰村镇银行机关' eq user.department}">selected</c:if> value="孟津民丰村镇银行机关">孟津民丰村镇银行机关</option>
 											</select>
 											<span class="form-message"></span>

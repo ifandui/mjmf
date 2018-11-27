@@ -69,18 +69,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-xs-3">
 						<ul class="nav default-sidenav">
 							<li>
-								<a href="customer/cust-list"> <i class="fa fa-list-ul"></i> 存量客户 </a>
+								<a href="customer/cust-list"> <i class="fa fa-wrench"></i> 存量客户 </a>
 							</li>
 							<li class="active">
-								<a> <i class="fa fa-list-ul"></i> 新客户认领 </a>
+								<a href="customer/cust-fullfill-list"> <i class="fa fa-list-ul"></i> 新客户认领 </a>
 							</li>						
 						</ul>
 					</div>
-					<div class="col-xs-9">
-						
-						<div class="page-content row">
-
-							
+					<div class="col-xs-9">						
+						<div class="page-content row">							
 							<div id="question-list">
 								<table class="table-striped table">
 									<thead>

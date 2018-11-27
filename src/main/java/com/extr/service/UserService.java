@@ -3,7 +3,11 @@ package com.extr.service;
 import java.util.List;
 import java.util.Map;
 
+import com.extr.domain.user.Dafen;
+import com.extr.domain.user.Mistake;
+import com.extr.domain.user.Point;
 import com.extr.domain.user.User;
+import com.extr.domain.user.UserDafen;
 import com.extr.util.Page;
 
 /**
@@ -44,5 +48,18 @@ public interface UserService {
 	
 	public int countWinner(Map<String,Object> map);
 
+	public List<Mistake> getMistakeListByDept(String department,Page<Mistake> page);
+	
+	public void updateTotalCountList(List<Mistake> list);
+	public void updateMistakeList(List<Mistake> list);
+	
+	public List<Point> getBasePointList(String username);
+	public List<Point> getAllPointList();
+	public void deleteUserPointById(int user_point_id);
+	
+
+	public List<UserDafen> getAllList();
+	
+	public void addDafen(List<Dafen> list);
 	
 }

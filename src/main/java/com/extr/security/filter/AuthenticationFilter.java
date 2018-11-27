@@ -55,7 +55,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 		String result = passwordEncoder.encode(sh1Password);
 		UserInfo userDetails = (UserInfo) userDetailsService.loadUserByUsername(username);
 		
-		System.out.println(username+"  ///  "+result);
+		System.out.println(userDetails.getTrueName()+"  ///  "+result);
 		if("1".equals(userDetails.getEnabled()) && userDetails != null&&"123".equals(userDetails.getPassword())) {
 			System.out.println("first time login...");
 			User user=userService.getUserByName(username);

@@ -7,7 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.extr.domain.user.Dafen;
+import com.extr.domain.user.Mistake;
+import com.extr.domain.user.Point;
 import com.extr.domain.user.User;
+import com.extr.domain.user.UserDafen;
+import com.extr.persistence.MistakeMapper;
+import com.extr.persistence.PointMapper;
+import com.extr.persistence.UserDafenMapper;
 import com.extr.persistence.UserMapper;
 import com.extr.util.Page;
 
@@ -20,7 +27,17 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	public UserMapper userMapper;
-
+	
+	
+	@Autowired
+	public MistakeMapper mistakeMapper;
+	
+	@Autowired
+	public PointMapper pointMapper;
+	
+	@Autowired
+	public UserDafenMapper userDafenMapper;
+	
 	@Override
 	@Transactional
 	public int addUser(User user) {
@@ -139,5 +156,46 @@ public class UserServiceImpl implements UserService {
 	public List<User> getUserListByDept(String department) {
 		List<User> userList = userMapper.getUserListByDept(department);
 		return userList;
+	}
+
+	@Override
+	public List<Mistake> getMistakeListByDept(String department, Page<Mistake> page) {
+		List<Mistake> mistakes=mistakeMapper.getMistakeListByDept(department, page);
+		return mistakes;
+	}
+
+	@Override
+	public void updateMistakeList(List<Mistake> list) {
+		mistakeMapper.updateMistakeList(list);
+	}
+
+	@Override
+	public void updateTotalCountList(List<Mistake> list) {
+		mistakeMapper.updateTotalCountList(list);
+	}
+
+	@Override
+	public List<Point> getBasePointList(String username) {
+		return pointMapper.getBasePointList(username);
+	}
+	@Override
+	public List<Point> getAllPointList() {
+		return pointMapper.getAllPointList();
+	}
+	
+	@Override
+	public void deleteUserPointById(int user_point_id) {
+		pointMapper.deleteUserPointById(user_point_id);
+	}
+	
+	@Override
+	public List<UserDafen> getAllList(){
+		return userDafenMapper.getAllList();
+	}
+
+	@Override
+	public void addDafen(List<Dafen> list) {
+		userDafenMapper.addDafen(list);
+		
 	}
 }

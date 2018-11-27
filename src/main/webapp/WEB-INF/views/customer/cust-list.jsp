@@ -62,12 +62,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-xs-3">
 						<ul class="nav default-sidenav">
 							<li class="active">
-								<a> <i class="fa fa-wrench"></i> 存量客户 </a>
+								<a> <i class="fa fa-wrench"></i> 存量客户</a>
 							</li>
-							<li>
-								<a href="customer/cust-fullfill-list"> <i class="fa fa-list-ul"></i> 新客户认领 </a>
-							</li>
-													
+							<c:if test="${fn:indexOf(userInfo.rolesName,'会计经理')>-1}"><li><a href="customer/cust-fullfill-list"> <i class="fa fa-list-ul"></i> 新客户认领 </a></li></c:if>	
+							<c:if test="${fn:indexOf(userInfo.rolesName,'后督')>-1}"><li><a href="user/miss-fullfill-list"> <i class="fa fa-times"></i> 差错录入 </a></li></c:if>											
 						</ul>
 					</div>
 					<div class="col-xs-9">
