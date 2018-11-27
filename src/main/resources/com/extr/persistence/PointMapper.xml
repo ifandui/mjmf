@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.extr.persistence.PointMapper">
+
+	<select id="getPointListByType" resultType="com.extr.domain.user.Point">
+		select id,name,description,point,`type` from et_point_type		
+		where `type`=${type}
+	</select>
+	<select id="getAllPointList" resultType="com.extr.domain.user.Point">
+		select id,name,description,point,`type` from et_point_type	
+	</select>
+	<select id="getBasePointList" resultType="com.extr.domain.user.Point">
+		select username,truename,id,`month`,user_id,point_id,name,description,point,type
+		from et_view_user_point where username=#{username}
+	</select>
+	
+	<insert id="insertMi"  parameterType="java.util.List">
+        INSERT INTO mjmf.et_user_mistake (oa_num, oa_nm, miss_count, `month`,total_count) VALUES
+       <foreach collection="list" item="item" index="index" separator="," >
+        (#{oa_num}, #{oa_nm}, ${miss_count}, #{month},${total_count})
+       </foreach>
+	</insert>
+	<delete id="deleteUserPointById">
+		delete from et_user_point where id=#{user_point_id}
+	</delete>
+
+</mapper>

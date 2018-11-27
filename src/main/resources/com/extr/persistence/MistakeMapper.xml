@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.extr.persistence.MistakeMapper">
+
+	
+	<insert id="addMistake" useGeneratedKeys="true" keyProperty="id" parameterType="com.extr.domain.user.Mistake">
+		INSERT INTO mjmf.et_user_mistake (oa_num, oa_nm, miss_count, `month`,total_count) VALUES(#{oa_num}, #{oa_nm}, ${miss_count}, #{month},${total_count});
+	</insert>
+	<delete id="delMistake" parameterType="com.extr.domain.user.Mistake">
+		delete from et_user_mistake where
+		id=#{id}
+	</delete>
+	<select id="getMistakeListByDept" resultType="com.extr.domain.user.Mistake">
+		select m.id,u.username as oa_num,u.truename as oa_nm,m.miss_count,m.`month`,m.total_count ,m.miss_count/m.total_count as mis_rate
+		from et_user u left join et_user_mistake m on u.username=m.oa_num where u.enabled=1 and u.department=#{department} and m.month=DATE_FORMAT(NOW(),'%Y%m')
+	</select>
+	
+	
+	<insert id="insertMistakeList"  parameterType="java.util.List">
+        INSERT INTO mjmf.et_user_mistake (oa_num, oa_nm, miss_count, `month`,total_count) VALUES
+       <foreach collection="list" item="item" index="index" separator="," >
+        (#{oa_num}, #{oa_nm}, ${miss_count}, #{month},${total_count})
+       </foreach>
+	</insert>
+	
+	<update id="updateTotalCountList"  parameterType="java.util.List">
+	   <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			UPDATE et_user_mistake
+			<set>
+			total_count = ${item.total_count}
+			</set>
+			WHERE ID = ${item.id}
+		</foreach>		 
+	</update>
+	<update id="updateMistakeList"  parameterType="java.util.List">
+	   <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+			UPDATE et_user_mistake
+			<set>
+			miss_count = ${item.miss_count}
+			</set>
+			WHERE ID = ${item.id}
+		</foreach>		 
+	</update>
+	
+	
+	
+	
+</mapper>

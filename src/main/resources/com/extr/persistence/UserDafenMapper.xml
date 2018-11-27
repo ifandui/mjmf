@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.extr.persistence.UserDafenMapper">
+
+	<select id="getAllList" resultType="com.extr.domain.user.UserDafen">
+		select id,name as username from dafen_user	
+	</select>
+	
+	<insert id="addDafen">	   
+	<foreach collection="list" item="item" separator=";">	  	 
+	insert into dafen_detail(username,target,zcsp,zdnl,fwtd,fwxl,fwzl,valid,sn,ip) values(#{item.username},#{item.target},${item.zcsp},#{item.zdnl},#{item.fwtd},#{item.fwxl},#{item.fwzl},1,#{item.sn},#{item.ip})	   
+	</foreach>	
+	</insert>
+
+</mapper>
